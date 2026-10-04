@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Study Notes Generator | AI Summarizer</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="header-badge">
+        <span class="pulse-dot"></span> Generative AI Mini Project
+      </div>
+      <h1>Smart Study Notes Generator</h1>
+      <p class="subtitle">Condense academic paragraphs into high-yield summaries and key takeaways with instant word count reduction analytics.</p>
+    </header>
+
+    <!-- Main Grid -->
+    <main class="main-grid">
+      <!-- Input Panel -->
+      <section class="card input-card">
+        <div class="card-header">
+          <h2>Input Study Paragraph</h2>
+          <span class="live-counter" id="inputCounter">0 words | 0 chars</span>
+        </div>
+
+        <div class="preset-group">
+          <span class="preset-label">Test with Presets:</span>
+          <div class="preset-buttons">
+            <button type="button" class="btn-chip" onclick="loadSample(1)">🔬 AI in Healthcare</button>
+            <button type="button" class="btn-chip" onclick="loadSample(2)">🌱 Renewable Energy</button>
+            <button type="button" class="btn-chip" onclick="loadSample(3)">⚛️ Quantum Computing</button>
+          </div>
+        </div>
+
+        <div class="input-wrapper">
+          <textarea id="inputText" placeholder="Paste or type a study paragraph here (minimum 25 words recommended)..." rows="9"></textarea>
+        </div>
+
+        <div class="action-bar">
+          <button type="button" class="btn-secondary" id="clearBtn" onclick="clearInput()">Clear</button>
+          <button type="button" class="btn-primary" id="generateBtn" onclick="processText()">
+            <span class="btn-icon">⚡</span> Generate Smart Notes
+          </button>
+        </div>
+      </section>
+
+      <!-- Output Panel -->
+      <section class="card output-card" id="outputCard">
+        <div class="card-header">
+          <h2>Generated Study Notes</h2>
+          <div class="export-actions">
+            <button class="btn-icon-only" onclick="copyNotes()" title="Copy to clipboard" id="copyBtn">📋 Copy</button>
+            <button class="btn-icon-only" onclick="downloadNotes()" title="Download notes as TXT">💾 Save</button>
+          </div>
+        </div>
+
+        <!-- Metrics Dashboard -->
+        <div class="metrics-dashboard">
+          <div class="metric-box">
+            <span class="metric-label">Original Words</span>
+            <span class="metric-value" id="origWordCount">0</span>
+          </div>
+          <div class="metric-arrow">➔</div>
+          <div class="metric-box">
+            <span class="metric-label">Summary Words</span>
+            <span class="metric-value" id="summWordCount">0</span>
+          </div>
+          <div class="metric-box highlight">
+            <span class="metric-label">Text Reduction</span>
+            <span class="metric-value" id="reductionRate">0.0%</span>
+          </div>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="reduction-meter">
+          <div class="meter-bar" id="meterBar" style="width: 0%;"></div>
+        </div>
+
+        <!-- Summary Section -->
+        <div class="output-block">
+          <div class="block-title">
+            <span>📝 Executive Summary</span>
+            <span class="quality-tag tag-coherence">Coherent</span>
+          </div>
+          <div class="summary-text" id="summaryOutput">
+            Your AI-generated summary will appear here once you hit "Generate Smart Notes".
+          </div>
+        </div>
+
+        <!-- Key Points Section -->
+        <div class="output-block">
+          <div class="block-title">
+            <span>🎯 Core Study Takeaways</span>
+            <span class="quality-tag tag-relevance">High Relevance</span>
+          </div>
+          <ul class="key-points-list" id="keyPointsOutput">
+            <li>Key conceptual points and definitions will be bulleted here.</li>
+            <li>Ideal for quick exam revision and rapid concept retention.</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <!-- Project Specifications Footer -->
+    <footer class="app-footer">
+      <div class="footer-meta">
+        <strong>Model Pipeline:</strong> Pre-trained Generative AI Model (BART / FLAN-T5 Architecture) &nbsp;|&nbsp;
+        <strong>Metrics:</strong> Original Count vs Summary Count with % Reduction &nbsp;|&nbsp;
+        <strong>Submission:</strong> Individual Mini Project
+      </div>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
